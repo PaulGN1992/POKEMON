@@ -88,6 +88,7 @@ export default function Container (){
               Nombre= {p.Nombre}
               Imagen = {p.Imagen}
               Tipos ={p.Tipos}
+              setCurrentPage = {setCurrentPage}
               />
           )
       })
