@@ -4,7 +4,10 @@ import {GET_ALLPOKEMON,
      CREATE_POKEMON,
      FILTER_TYPES, 
      GET_POKEMON_ID,
-     RESET} from './actions';
+     RESET,
+     FILTER_CREATE,
+     ORDER_NAME,
+     ORDER_ATTACK} from './actions';
 
 let initialStore = {
     pokemonsName: [],
@@ -72,9 +75,42 @@ export default function rootReducer(state = initialStore, action) {
                 pokemon.Tipos.some(tipo => tipo.Nombre === action.payload))
         }
 
+        case FILTER_CREATE: return {
+          ...state,
+          allPokemons: state.copyPokemons.filter(pokemon =>
+              pokemon.Creado === action.payload)
+        }
+
+        case ORDER_ATTACK: 
+        
+        let ordenados;
+        if (action.payload === "Fuerte-debil") {
+            ordenados = state.allPokemons.sort((a, b) => (a.Ataque < b.Ataque ? 1 : -1));
+        } else {
+            ordenados = state.allPokemons.sort((a, b) => (b.Ataque < a.Ataque ? 1 : -1));
+        }
+        return {
+        ...state,
+        allPokemons: [...ordenados],
+        };
+
+        case ORDER_NAME: 
+        
+        let ordenadosN;
+        if (action.payload === "A-Z") {
+            ordenadosN = state.allPokemons.sort((a, b) => (a.Nombre > b.Nombre ? 1 : -1));
+        } else {
+            ordenadosN = state.allPokemons.sort((a, b) => (b.Nombre > a.Nombre ? 1 : -1));
+        }
+        return {
+        ...state,
+        allPokemons: [...ordenadosN],
+        };
+
         case RESET: return {
             ...state,
             allPokemons: state.copyPokemons,
+            copyPokemons: state.copyPokemons,
             pokemonsName: [],
             error: ""
         }

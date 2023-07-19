@@ -2,7 +2,7 @@ import Pokemon from '../pokemon/pokemon';
 import style from '../container/container.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { getPokemonName, filterTypes, resetPokemons } from '../../redux/actions';
+import { filterCreate, filterTypes, orderAttack, orderName, resetPokemons } from '../../redux/actions';
 
 export default function Container (){
   const pokemons = useSelector(state=> state.allPokemons);
@@ -10,6 +10,9 @@ export default function Container (){
   const typesPokemon = useSelector(state => state.types);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedType, setSelectedType] = useState("");
+  const [filter, setFilter] = useState("");
+  const [orderA, setOrderA] = useState("");
+  const [orderN, setOrderN] = useState("");
   const pokemonPerPage = 12;
   const dispatch = useDispatch();
   
@@ -35,24 +38,42 @@ export default function Container (){
     setCurrentPage(totalPages)
   }
 
+  const handleOrderAttack=(e)=>{
+    setOrderA(e.target.value);
+    dispatch(orderAttack(e.target.value))
+  }
+
+  const handleOrderName=(e)=>{
+    setOrderN(e.target.value);
+    dispatch(orderName(e.target.value))
+  }
+
   const handleTypes = (e) => {
     setSelectedType(e.target.value);
     dispatch(filterTypes(e.target.value))
   }
 
+  const handleCreate = (e) => {
+    setFilter(e.target.value);
+    if(e.target.value === 'API') {
+      dispatch(filterCreate(false))
+    } else {
+      dispatch(filterCreate(true))
+    }
+  }
   const handleReset = () =>{
     dispatch(resetPokemons())
     setCurrentPage(1)
   }
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedType]);
+  }, [selectedType, filter, orderA, orderN]);
 
   const renderButton = ()=> {
     return pokemonsName.length > 0? (
-      <button onClick={()=>dispatch(getPokemonName(''))}>Ver todos</button>
+      <button onClick={()=>dispatch(resetPokemons())}>Ver todos</button>
   ) : (
-    <div>
+    <div className={style.botonBusqueda}>
       <button onClick={inicioHandle} disabled={currentPage === 1}>
           INICIO
       </button>
@@ -72,13 +93,19 @@ export default function Container (){
   return(
     <div>
       <div className={style.botones}>
-        <span onChange={handleTypes}>{`FILTRAR:  `}
+        <span onChange={handleTypes}>{`FILTRAR POR TIPO:  `}
           <select>{typesPokemon.map((type)=>(<option key={type.ID} value={type.Nombre}>{type.Nombre}</option>))}</select>
-          <button onClick={handleReset}>RESET</button>
+        </span>
+        <span onChange={handleCreate}>{`FILTRAR POR CREACION:  `}
+          <select>{["API", "CREADO"].map((f)=>(<option key={f} value={f}>{f}</option>))}</select>
         </span>
         {renderButton()}
-        <span>ORDENAR: <select><option value="Prueba">Prueba2</option></select></span>
+        <span  onChange={handleOrderAttack}>ORDENAR POR FUERZA:  
+          <select>{["Fuerte-debil", "Debil-Fuerte"].map((f)=>(<option key={f} value={f}>{f}</option>))}</select></span>
+          <span  onChange={handleOrderName}>ORDENAR POR NOMBRE:  
+          <select>{["A-Z", "Z-A"].map((n)=>(<option key={n} value={n}>{n}</option>))}</select></span>
       </div>
+      <button className={style.reset} onClick={handleReset}>RESET</button>
       <div className={style.container}>
       {currentPokemon.map((p)=>{
           return (
@@ -95,6 +122,7 @@ export default function Container (){
       }
       </div>
       {renderButton()}
+      
     </div>
   )
 }

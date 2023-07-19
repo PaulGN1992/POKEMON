@@ -1,7 +1,7 @@
 import style from '../pokemon/pokemon.module.css';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { filterTypes } from '../../redux/actions';
+import { filterTypes} from '../../redux/actions';
 
 export default function Pokemon({ID, Nombre, Imagen, Tipos, setCurrentPage}) {
     const URL = `/detail/${ID}`
@@ -17,7 +17,7 @@ export default function Pokemon({ID, Nombre, Imagen, Tipos, setCurrentPage}) {
             <Link to = {URL} ><img src={Imagen} alt={Nombre}></img></Link>
             <h3> ID: {ID} </h3>
             <div>Tipo: {Tipos.map(t => 
-                        {return <span key={t.Nombre}  onClick={()=>handleTypes(t.Nombre)} >{` ${t.Nombre.toUpperCase()} `}</span>})}
+                        {return <span key={t.Nombre}  onClick={()=>handleTypes(t.Nombre)} className={style[t.Nombre]}>{` ${t.Nombre.toUpperCase()} `}</span>})}
             </div>
         </div>
 

@@ -4,6 +4,8 @@ import { createPokemon, getAllPokemon, resetPokemons } from '../../redux/actions
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
+import style from '../Form/form.module.css'
+
 function validate(pokemonData) {
   let errores = {};
 
@@ -223,7 +225,7 @@ function Form() {
   };
  
   return (
-    <div>
+    <div className={style.form}>
         <h1>CREAR POKEMON</h1>
         <img src={image} width='200em' alt="" />
       <div>

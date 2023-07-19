@@ -22,32 +22,32 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        min: 1,
-        max: 250
+        min: 9,
+        max: 201
       }
     },
     Ataque: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        min: 1,
-        max: 250
+        min: 9,
+        max: 201
       }
     },
     Defensa: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        min: 1,
-        max: 250
+        min: 9,
+        max: 201
       }
     },
     Velocidad: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        min: 1,
-        max: 250
+        min: 9,
+        max: 201
       }
     },
     Altura: {

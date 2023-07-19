@@ -7,6 +7,9 @@ export const FILTER_TYPES = "FILTER_TYPES";
 export const RESET = "RESET";
 export const GET_POKEMON_ID = "GET_POKEMON_ID";
 export const CREATE_POKEMON = "CREATE_POKEMON";
+export const FILTER_CREATE = 'FILTER CREATE';
+export const ORDER_ATTACK = 'ORDER_ATTACK';
+export const ORDER_NAME = 'ORDER_NAME';
 
 export const createPokemon = (pokemonData)=>{
     return async (dispatch) => {
@@ -93,6 +96,26 @@ export const filterTypes = (Tipo) =>{
     }
 }
 
+export const filterCreate = (typeCreate) =>{
+    return {
+        type : FILTER_CREATE,
+        payload : typeCreate,
+    }
+}
+
+export const orderAttack = (ataque) =>{
+    return {
+        type : ORDER_ATTACK,
+        payload : ataque,
+    }
+}
+
+export const orderName = (order) =>{
+    return{
+        type :ORDER_NAME,
+        payload: order,
+    }
+}
 export const resetPokemons = ()=>{
     return {
         type: RESET

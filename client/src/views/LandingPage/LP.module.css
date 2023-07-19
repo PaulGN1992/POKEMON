@@ -1,0 +1,57 @@
+.lp{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('../../assent/14721-pokemon.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50em;
+    position: relative;
+}
+
+.lp img{
+    display: block;
+    position: absolute;
+    top: 5em;
+}
+
+.img2{
+    width: 10em;
+    margin-top: 8em;
+}
+
+.img2:hover {
+    cursor: pointer;
+    transform: scale(1.30);
+    border-radius: 100%;
+    box-shadow: 10px 1px 500px #FF4D00;
+    animation-name: surprise;
+    -webkit-animation-name: surprise;
+    -moz-animation-name: surprise;
+animation-duration: .8s;
+    -webkit-animation-duration: .8s;
+    -moz-animation-duration: .8s;
+}
+.lp button{
+    position: absolute;
+    top: 20em;
+    color: green;
+}
+
+
+    @keyframes surprise
+    {
+        0% {transform: rotate(0deg) scale(1,1);;}
+        10% {transform: rotate(7deg) scale(2,2);}
+        20% {transform: rotate(-7deg) scale(2,2);}
+        30% {transform: rotate(7deg) scale(2,2);}
+        40% {transform: rotate(-7deg) scale(2,2);}
+        50% {transform: rotate(7deg) scale(2,2);}
+        60% {transform: rotate(-7deg) scale(2,2);}
+        70% {transform: rotate(7deg) scale(2,2);}
+        80% {transform: rotate(-7deg) scale(2,2);}
+        90% {transform: rotate(7deg) scale(2,2);}
+        100% {transform: rotate(0deg) scale(1,1);}
+    }
+              

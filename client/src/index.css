@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Lilita One', cursive;
+  /* font-family: 'Outfit', sans-serif; */
+  /* font-family: 'Ubuntu', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #202020;
-  color: #d5c235
+  color: #FFCB05;
+  background: url('./assent/fondo.jpg')
 }
 
 code {

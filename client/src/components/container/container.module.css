@@ -3,10 +3,58 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 1em;
+    background-color: rgba(31, 30, 30, 0.5);
+    margin-left: 3em;
+    margin-right: 3em;
+    border-radius: 5em;
+
+}
+
+.botonBusqueda button{
+    color: #FF4D00;
+    font-weight: bold;
+    background: #202020;
+    cursor: pointer;
+}
+
+.botonBusqueda button:disabled {
+    background: #cfcece52; 
+    color: #ff4d00b9;
+    cursor: not-allowed!important;
 }
 
 .botones {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 2em;
+    color: #FFCB05;
+}
+
+.botones option{
+    font-size: small;
+}
+
+.botones select{
+    background: #202020;
+    color: #FFCB05;
+}
+
+.reset{
+    background: #e40f0f;
+    color: white;
+    border: 0.1em solid white;
+    border-radius: 50%;
+    height: 10vh;
+    width: 10vh;
+    margin-top: 2em;
+    font-size: 2vh;
+
+}
+
+.reset:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 1px 1px 50px rgb(172, 9, 9);
 }
