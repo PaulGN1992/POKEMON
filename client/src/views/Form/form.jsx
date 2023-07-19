@@ -165,33 +165,47 @@ function Form() {
 
   const handleTypeSelection = (event) => {
     const { value } = event.target;
-
-    if (pokemonData.Tipos.length >= 3) {
-        setState((prevData)=>({
-          ...prevData,
-          errores: {
-            Tipos: "Maximo 3 tipos "
-          }
-        }))
-      } else if (pokemonData.Tipos.includes(value)) {
-        setState((prevData)=>({
-          ...prevData,
-          errores: {
-            Tipos: "Ya existe ese tipo"
-          }
-        })) 
-      }
-    setPokemonData((prevData) => ({
-      ...prevData,
-      Tipos: [...prevData.Tipos, value]
-    }));
+  
+    if (pokemonData.Tipos.includes(value)) {
+      setState((prevState) => ({
+        ...prevState,
+        errores: {
+          ...prevState.errores,
+          Tipos: "Ya existe ese tipo"
+        }
+      }));
+    } else if (pokemonData.Tipos.length >= 3) {
+      setState((prevState) => ({
+        ...prevState,
+        errores: {
+          ...prevState.errores,
+          Tipos: "Maximo 3 tipos"
+        }
+      }));
+    } else {
+      setPokemonData((prevData) => ({
+        ...prevData,
+        Tipos: [...prevData.Tipos, value]
+      }));
+      setState((prevState) => ({
+        ...prevState,
+        errores: {}
+      }));
+    }
   };
+  
 
   const removeType = (type) => {
     setPokemonData((prevData) => ({
       ...prevData,
       Tipos: prevData.Tipos.filter((t) => t !== type)
     }));
+    if (pokemonData.Tipos.length <= 3) {
+      setState((prevState) => ({
+        ...prevState,
+        errores: {}
+      }));
+    }
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -223,49 +237,51 @@ function Form() {
     });
       
   };
- 
+  console.log(state.errores)
   return (
-    <div className={style.form}>
-        <h1>CREAR POKEMON</h1>
-        <img src={image} width='200em' alt="" />
-      <div>
+    <div>
+      <h1 className={style.h1}>CREAR POKEMON</h1>
+      <div className={style.form}>
+      <img src={image} alt="" />
+      <section>
         <label>Nombre:</label>
+      <div className={style.campos}>
         <input type="text" id="Nombre" name="Nombre" value={pokemonData.Nombre} onChange={handleInputChange} />
-        {state.errores.Nombre && <p>{state.errores.Nombre}</p>}
-        {state.namePokemonExists && <p>Ya existe el nombre del pokemon</p>}
+        {state.errores.Nombre && <span>{state.errores.Nombre}</span>}
+        {state.namePokemonExists && <span>Ya existe el nombre del pokemon</span>}
       </div>
-      <div>
         <label>Vida:</label>
+      <div className={style.campos}>
         <input type="number" id="Vida" name="Vida" value={pokemonData.Vida} onChange={handleInputChange} />
-        {state.errores.Vida && <p>{state.errores.Vida}</p>}   
+        {state.errores.Vida && <span>{state.errores.Vida}</span>}  
       </div>
-      <div>
         <label>Ataque:</label>
+      <div className={style.campos}>
         <input type="number" id="Ataque" name="Ataque" value={pokemonData.Ataque} onChange={handleInputChange} />
-        {state.errores.Ataque && <p>{state.errores.Ataque}</p>}
+        {state.errores.Ataque && <span>{state.errores.Ataque}</span>}
       </div>
-      <div>
         <label>Defensa:</label>
+      <div className={style.campos}>
         <input type="number" id="Defensa" name="Defensa" value={pokemonData.Defensa} onChange={handleInputChange} />
-        {state.errores.Defensa && <p>{state.errores.Defensa}</p>}
+        {state.errores.Defensa && <span>{state.errores.Defensa}</span>}
       </div>
-      <div>
         <label>Velocidad:</label>
+      <div className={style.campos}>
         <input type="number" id="Velocidad" name="Velocidad" value={pokemonData.Velocidad} onChange={handleInputChange} />
-        {state.errores.Velocidad && <p>{state.errores.Velocidad}</p>}
+        {state.errores.Velocidad && <span>{state.errores.Velocidad}</span>}
       </div>
-      <div>
         <label>Altura(metros):</label>
+      <div className={style.campos}>
         <input type="number" id="Altura" name="Altura" value={pokemonData.Altura} onChange={handleInputChange} />
-        {state.errores.Altura && <p>{state.errores.Altura}</p>}
+        {state.errores.Altura && <span>{state.errores.Altura}</span>}
       </div>
-      <div>
         <label>Peso(kg):</label>
+      <div className={style.campos}>
         <input type="number" id="Peso" name="Peso" value={pokemonData.Peso} onChange={handleInputChange} />
-        {state.errores.Peso && <p>{state.errores.Peso}</p>}
+        {state.errores.Peso && <span>{state.errores.Peso}</span>}
       </div>
       <div>
-        <span>
+        <span className={style.campos}>
           Tipos:{' '}
           <select
             name="Tipos"
@@ -280,19 +296,21 @@ function Form() {
             ))}
           </select>
         </span>
-        {state.errores.Tipos && <p>{state.errores.Tipos}</p>}
-        <ul>
+        <span className={style.unico}>
           {pokemonData.Tipos.map((type, index) => (
-            <li key={index}>
-              {type}
+            <span className={style.tipos} key={index}>
+              {type.toUpperCase()}
               <button onClick={() => removeType(type)}>Eliminar</button>
-            </li>
+            </span>
           ))}
-        </ul>
+        </span>
+        {state.errores.Tipos && <span>{state.errores.Tipos}</span>}
       </div>
-      {Object.keys(state.errores).length === 0 && (<button onClick={handleSubmit}>CREAR</button>)}
-      {state.showError && <p>{errors} </p>}
-      {state.showCheck && <p>{check}</p>}
+      {state.showError && <span>{errors} </span>}
+      {state.showCheck && <span>{check}</span>}
+      </section>
+      </div>
+      {Object.keys(state.errores).length === 0 && (<button onClick={handleSubmit} className={style.botonCrear}>CREAR</button>)}
     </div>
   );
 }

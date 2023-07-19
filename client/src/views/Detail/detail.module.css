@@ -1,0 +1,66 @@
+.detail {
+    padding: 2em;
+    padding-top: 3em;
+}
+
+.detail h1{
+    font-size: xx-large;
+    color: #7AC74C;
+}
+
+.detail button{
+    padding: 1em;
+    border-radius: 10em;
+    font-weight: bold;
+}
+
+.detail button:hover {
+    cursor: pointer;
+}
+
+.datos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail .grass {
+    border: 4px solid rgb(19, 216, 36);
+    color: green;
+}
+
+.detail .poison {
+    border: 4px solid rgb(198, 21, 186);
+    color: purple;
+}
+
+.detail .bug {
+    border: 4px solid rgb(165, 198, 21);
+    color: rgb(128, 107, 0);
+}
+
+.detail .fire {
+    border: 4px solid rgb(253, 3, 3);
+    color: rgb(215, 24, 24);
+}
+
+.detail .water {
+    border: 4px solid rgb(42, 137, 182);
+    color: rgb(49, 100, 162)
+}
+
+.detail .electric {
+    border: 4px solid rgb(255, 255, 0);
+    color: rgb(179, 179, 33);
+}
+
+.detail .ground {
+    border: 4px solid rgb(160, 59, 4);
+    color: rgb(52, 39, 6);
+}
+
+.detail .flying {
+    border: 4px solid rgb(200, 105, 16);
+    color: orange;
+}

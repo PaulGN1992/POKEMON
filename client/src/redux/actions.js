@@ -10,6 +10,7 @@ export const CREATE_POKEMON = "CREATE_POKEMON";
 export const FILTER_CREATE = 'FILTER CREATE';
 export const ORDER_ATTACK = 'ORDER_ATTACK';
 export const ORDER_NAME = 'ORDER_NAME';
+export const DELETE_POKEMON = 'DELETE_POKEMON'
 
 export const createPokemon = (pokemonData)=>{
     return async (dispatch) => {
@@ -119,5 +120,23 @@ export const orderName = (order) =>{
 export const resetPokemons = ()=>{
     return {
         type: RESET
+    }
+}
+
+export const deletePokemon = (ID)=> {
+    return async (dispatch) => {
+        const URL = `http://localhost:3001/pokemons/${ID}`;
+        try {
+            await axios.delete(URL);
+            return dispatch({
+                type : DELETE_POKEMON,
+                payload : '',
+            })
+        } catch (error) {
+            return dispatch({
+                type : DELETE_POKEMON,
+                payload : error.message
+            })
+        }
     }
 }

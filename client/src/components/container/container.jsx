@@ -94,18 +94,18 @@ export default function Container (){
     <div>
       <div className={style.botones}>
         <span onChange={handleTypes}>{`FILTRAR POR TIPO:  `}
-          <select>{typesPokemon.map((type)=>(<option key={type.ID} value={type.Nombre}>{type.Nombre}</option>))}</select>
+          <select><option value="">Seleccionar tipo</option>{typesPokemon.map((type)=>(<option key={type.ID} value={type.Nombre}>{type.Nombre}</option>))}</select>
         </span>
         <span onChange={handleCreate}>{`FILTRAR POR CREACION:  `}
           <select>{["API", "CREADO"].map((f)=>(<option key={f} value={f}>{f}</option>))}</select>
         </span>
         {renderButton()}
         <span  onChange={handleOrderAttack}>ORDENAR POR FUERZA:  
-          <select>{["Fuerte-debil", "Debil-Fuerte"].map((f)=>(<option key={f} value={f}>{f}</option>))}</select></span>
+          <select><option value="">Ordenar por...</option>{["Fuerte-debil", "Debil-Fuerte"].map((f)=>(<option key={f} value={f}>{f}</option>))}</select></span>
           <span  onChange={handleOrderName}>ORDENAR POR NOMBRE:  
-          <select>{["A-Z", "Z-A"].map((n)=>(<option key={n} value={n}>{n}</option>))}</select></span>
+          <select><option value="">Ordenar por...</option>{["A-Z", "Z-A"].map((n)=>(<option key={n} value={n}>{n}</option>))}</select></span>
       </div>
-      <button className={style.reset} onClick={handleReset}>RESET</button>
+        <button className={style.reset} onClick={handleReset}>RESET</button>
       <div className={style.container}>
       {currentPokemon.map((p)=>{
           return (

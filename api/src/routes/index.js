@@ -5,6 +5,7 @@ const getTypes = require('../controllers/getTypes')
 const getPokemon = require('../controllers/getPokemon')
 const getPokemonById = require('../controllers/getPokemonId')
 const postPokemon = require('../controllers/postPokemon')
+const deletePokemon = require('../controllers/deletePokemon')
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.get('/pokemons', getPokemon)
 router.get('/types', getTypes)
 router.post('/pokemons', postPokemon)
 router.get('/pokemons/:id', getPokemonById)
+router.delete('/pokemons/:id', deletePokemon)
 
 
 module.exports = router;

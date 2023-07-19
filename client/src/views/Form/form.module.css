@@ -1,3 +1,120 @@
+.h1{
+    color: #6F35FC;
+}
 .form{
     margin: 0.5em;
+    display: flex;
+    flex-direction: row;
+    background: rgba(42, 44, 42, 0.288);
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.form section{
+    padding:1.5em;
+    color:  #0085CA;
+    font-size: medium;
+}
+
+.form img {
+    width: 25em;
+}
+
+.form label {
+    display: flex;
+    justify-content: left;
+}
+
+.form span {
+    display: flex;
+    justify-content: left;
+}
+
+.form .campos {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 0.5em;
+    justify-content: space-between;
+}
+
+.form .campos input{
+    background: rgba(37, 39, 37, 0.721);
+    color: #dfaa09;
+}
+
+.form .tipos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.5em;
+}
+
+.form .unico{
+    display: flex;
+    justify-content: center;
+}
+
+.form .campos span{
+    color: #FF4D00;
+    font-weight: 200;
+    font-size: small;
+}
+
+.form select{
+    color: #FFCB05;
+    background: #202020;
+}
+
+.form button{
+    color: #FFCB05;
+    background: #202020;
+}
+
+.botonCrear {
+    width: 13vw;
+    background: transparent;
+    margin: 1vw;
+    border: 0.8vw;
+    border-radius: 5em 5em 2em 5em;
+    padding: 0.1em;
+    font-size: 2vw;
+    font-weight: bold;
+    color: #6F35FC;
+    cursor: pointer;
+    border: 0.6vw solid #FFCB05 ;
+    
+}
+
+.botonCrear:hover {
+    color: #FFCB05;
+    border: 0.7vw solid #6F35FC;
+    animation-name: shake;
+    -webkit-animation-name: shake;
+    -moz-animation-name: shake;
+animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+
+}
+    
+
+
+    
+@keyframes shake {
+    0%  {transform: translate(1px, 1px) rotate(0deg);}
+    10% {transform: translate(-1px, -2px) rotate(-1deg);}
+    20% {transform: translate(-3px, 0px) rotate(1deg);}
+    30% {transform: translate(3px, 2px) rotate(0deg);}
+    40% {transform: translate(1px, -1px) rotate(1deg);}
+    50% {transform: translate(-1px, 2px) rotate(-1deg);}
+    60% {transform: translate(-3px, 1px) rotate(0deg);}
+    70% {transform: translate(3px, 1px) rotate(-1deg);}
+    80% {transform: translate(-1px, -1px) rotate(1deg);}
+    90% {transform: translate(1px, 2px) rotate(0deg);}
+    100% {transform: translate(1px, -2px) rotate(-1deg);}
 }

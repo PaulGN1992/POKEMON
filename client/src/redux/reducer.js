@@ -7,7 +7,8 @@ import {GET_ALLPOKEMON,
      RESET,
      FILTER_CREATE,
      ORDER_NAME,
-     ORDER_ATTACK} from './actions';
+     ORDER_ATTACK,
+     DELETE_POKEMON} from './actions';
 
 let initialStore = {
     pokemonsName: [],
@@ -107,12 +108,21 @@ export default function rootReducer(state = initialStore, action) {
         allPokemons: [...ordenadosN],
         };
 
-        case RESET: return {
+        case DELETE_POKEMON:
+        return {
+          ...state,
+          error: action.payload,
+        }
+        case RESET: 
+        
+        let ordenadosT = state.copyPokemons.sort((a, b) => (b.ID < a.ID ? 1 : -1));
+  
+        return {
             ...state,
-            allPokemons: state.copyPokemons,
-            copyPokemons: state.copyPokemons,
+            allPokemons: [...ordenadosT],
             pokemonsName: [],
-            error: ""
+            error: "",
+            check: [],            
         }
         default: return{
             ...state
