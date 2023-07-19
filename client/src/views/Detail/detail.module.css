@@ -12,6 +12,8 @@
     padding: 1em;
     border-radius: 10em;
     font-weight: bold;
+    border: 4px solid rgb(229, 112, 53);
+    color: rgb(229, 112, 53);
 }
 
 .detail button:hover {

@@ -306,8 +306,10 @@ function Form() {
         </span>
         {state.errores.Tipos && <span>{state.errores.Tipos}</span>}
       </div>
+      <div className={style.errores}>
       {state.showError && <span>{errors} </span>}
       {state.showCheck && <span>{check}</span>}
+      </div>
       </section>
       </div>
       {Object.keys(state.errores).length === 0 && (<button onClick={handleSubmit} className={style.botonCrear}>CREAR</button>)}

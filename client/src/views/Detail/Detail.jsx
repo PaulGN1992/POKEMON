@@ -64,7 +64,7 @@ function Detail () {
                )
             })  
             }
-        <div><Link to='/home'><button>HOME</button></Link></div>
+        <div><Link to='/home'><button>Regresar</button></Link></div>
         </section>
         
         

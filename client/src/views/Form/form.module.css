@@ -10,7 +10,10 @@
     align-items: center;
     gap: 1em;
 }
-
+.form .errores{
+    font-size: x-large;
+    color: #FFCB05;
+}
 .form section{
     padding:1.5em;
     color:  #0085CA;
