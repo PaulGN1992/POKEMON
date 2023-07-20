@@ -71,6 +71,18 @@ function Detail () {
     setCurrentPokemonIndex(currentPokemonIndex+1)
   }
 
+  function barra(propiedad, color) {
+    const barraColor = color || '#4CAF50'
+    return (
+        <div className={style.barra}>
+        <div
+          className={style.nivelBarra}
+          style={{ width: `${(propiedad / 200) * 100}%`, background:barraColor }}
+        ></div>
+      </div>
+    )
+  }
+
     return (
         <section className={style.detail}>
         <button onClick={handlePrevious} disabled={isFirstPokemon}>
@@ -88,11 +100,15 @@ function Detail () {
                     <div>
                     <h1>{p.Nombre.toUpperCase()}</h1>
                     <h2>Vida: {p.Vida}</h2>
+                    {barra(p.Vida, 'red')}
                     <h2>Ataque: {p.Ataque}</h2>
+                    {barra(p.Ataque, 'blue')}
                     <h2>Defensa: {p.Defensa}</h2>
+                    {barra(p.Defensa)}
                     <h2>Velocidad: {p.Velocidad}</h2>
-                    <h2>Altura: {`${p.Altura/10} metros`}</h2>
-                    <h2>Peso: {`${p.Peso/10} kilogramos`}</h2>
+                    {barra(p.Velocidad, 'purple')}
+                    <h2><span>Altura: </span>{`${p.Altura/10} metros`}</h2>
+                    <h2><span>Peso: </span>{`${p.Peso/10} kilogramos`}</h2>
                     <div>Tipo: {p.Tipos.map(t => 
                         {return <Link to='/home'  key={t.Nombre} ><button className={style[t.Nombre]} onClick={()=>dispatch(filterTypes(t.Nombre))}><span>{` ${t.Nombre.toUpperCase()} `}</span></button></Link>})}</div>
                     {p.Creado === true && <button onClick={()=>{handleDelete(p.ID)}}>Eliminar Pokemon</button>}    

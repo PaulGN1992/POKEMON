@@ -13,6 +13,13 @@
     color: #7AC74C;
 }
 
+.detail h2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+}
+
 .detail button{
     padding: 1em;
     border-radius: 10em;
@@ -72,3 +79,18 @@
     border: 4px solid rgb(200, 105, 16);
     color: orange;
 }
+
+.barra {
+    width: 15em; /* Ancho de la barra de vida */
+    height: 1em; /* Altura de la barra de vida */
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+  .nivelBarra {
+    height: 100%;
+    background-color: #4CAF50;
+  }
