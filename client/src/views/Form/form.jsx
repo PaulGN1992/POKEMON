@@ -174,7 +174,7 @@ function Form() {
           Tipos: "Ya existe ese tipo"
         }
       }));
-    } else if (pokemonData.Tipos.length >= 3) {
+    } else if (pokemonData.Tipos.length >= 3 ) {
       setState((prevState) => ({
         ...prevState,
         errores: {
@@ -200,13 +200,17 @@ function Form() {
       ...prevData,
       Tipos: prevData.Tipos.filter((t) => t !== type)
     }));
-    if (pokemonData.Tipos.length <= 3) {
+    if (pokemonData.Tipos.length <= 3 && pokemonData.Tipos.length >= 1) {
       setState((prevState) => ({
         ...prevState,
         errores: {}
       }));
     }
   };
+
+  function hasOtherErrors(errores) {
+    return Object.keys(errores).some((key) => key !== 'Tipos' && errores[key]);
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
   
@@ -237,6 +241,9 @@ function Form() {
     });
       
   };
+
+  const hasErrors = state.namePokemonExists || hasOtherErrors(state.errores) || pokemonData.Tipos.length < 1 || pokemonData.Tipos.length > 3;
+  
   console.log(state.errores)
   return (
     <div>
@@ -312,7 +319,7 @@ function Form() {
       </div>
       </section>
       </div>
-      {Object.keys(state.errores).length === 0 && (<button onClick={handleSubmit} className={style.botonCrear}>CREAR</button>)}
+      {hasErrors? null : (<button onClick={handleSubmit} className={style.botonCrear}>CREAR</button>)}
     </div>
   );
 }

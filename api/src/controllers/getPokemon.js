@@ -1,5 +1,5 @@
 const axios = require('axios')
-const URL = "https://pokeapi.co/api/v2/pokemon?limit=240"
+const URL = "https://pokeapi.co/api/v2/pokemon?limit=360"
 const {Tipo, Pokemon} = require('../db')
 const {Op} = require('sequelize')
 

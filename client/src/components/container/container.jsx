@@ -69,9 +69,17 @@ export default function Container (){
     setCurrentPage(1);
   }, [selectedType, filter, orderA, orderN]);
 
+  if(!pokemonsName) {
+    return <div>Cargando...</div>
+  }
+
+  
+
   const renderButton = ()=> {
     return pokemonsName.length > 0? (
+    <div className={style.botonBusqueda}>
       <button onClick={()=>dispatch(resetPokemons())}>Ver todos</button>
+    </div>
   ) : (
     <div className={style.botonBusqueda}>
       <button onClick={inicioHandle} disabled={currentPage === 1}>
@@ -89,6 +97,24 @@ export default function Container (){
     </div>
   )
   }
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button
+          key={i}
+          onClick={() => setCurrentPage(i)}
+          className={currentPage === i ? style.active : ''}
+        >
+          {i}
+        </button>
+      );
+    }
+ 
+    return pageNumbers;
+  };
+  
     
   return(
     <div>
@@ -108,18 +134,21 @@ export default function Container (){
         <button className={style.reset} onClick={handleReset}>RESET</button>
       <div className={style.container}>
       {currentPokemon.map((p)=>{
-          return (
-              <Pokemon
-              key={p.ID}
-              ID = {p.ID}
-              Nombre= {p.Nombre}
-              Imagen = {p.Imagen}
-              Tipos ={p.Tipos}
-              setCurrentPage = {setCurrentPage}
-              />
+        return (
+          <Pokemon
+          key={p.ID}
+          ID = {p.ID}
+          Nombre= {p.Nombre}
+          Imagen = {p.Imagen}
+          Tipos ={p.Tipos}
+          setCurrentPage = {setCurrentPage}
+          />
           )
-      })
+        })
       }
+      </div>
+      <div className={style.botonNumero}>
+      {renderPageNumbers()}
       </div>
       {renderButton()}
       

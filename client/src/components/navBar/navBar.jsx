@@ -18,6 +18,7 @@ export default function NavBar (){
     };
     const handleSearch = ()=> {
       dispatch(getPokemonName(searchPokemon))
+      dispatch(resetPokemons())
       setSearchPokemon("");
       navigate('/home')
     };
@@ -26,13 +27,19 @@ export default function NavBar (){
         navigate('/home')
         dispatch(resetPokemons())
     }
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        handleSearch(); // Ejecutar la misma función que cuando se hace clic en el botón "Buscar"
+      }
+    };
     
     useEffect(()=>{
       if(errors === 'No existe ese pokemon') {
         setShowError(true)
         setTimeout(() => {
           setShowError(false);
-        }, 1000);
+        }, 2000);
       } 
     },[errors])
 
@@ -47,7 +54,12 @@ export default function NavBar (){
         </div>
         <div><img src={logo} alt="logoPokemon" onClick={()=>handleClick()} /></div>
         <div className={style.search}>
-            <input placeholder="Buscar por nombre" type="search" value={searchPokemon} onChange={handleInputChange}/>
+            <input 
+            placeholder="Buscar por nombre" 
+            type="search" 
+            value={searchPokemon} 
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}/>
             <button onClick={handleSearch}>Buscar</button>
         {showError && <span>No existe ese Pokemon</span> }
         </div>

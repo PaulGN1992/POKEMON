@@ -11,6 +11,18 @@
 
 }
 
+.botonNumero button{
+    color: #FFCB05;
+    font-weight: bold;
+    background: #202020;
+    cursor: pointer;
+}
+
+.botonNumero .active{
+    background-color: #007bff;
+    color: #fff;
+}
+
 .botonBusqueda button{
     color: #FF4D00;
     font-weight: bold;

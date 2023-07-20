@@ -115,7 +115,20 @@ export default function rootReducer(state = initialStore, action) {
         }
         case RESET: 
         
-        let ordenadosT = state.copyPokemons.sort((a, b) => (b.ID < a.ID ? 1 : -1));
+          const integers = [];
+          const uuids = [];
+
+          state.copyPokemons.forEach(pokemon => {
+            if (typeof pokemon.ID === 'number') {
+              integers.push(pokemon);
+            } else {
+              uuids.push(pokemon);
+            }
+          });
+
+          const sortedIntegers = integers.sort((a, b) => a.ID - b.ID);
+          const sortedUUIDs = uuids.sort((a, b) => (a.ID < b.ID ? -1 : 1));
+          const ordenadosT = [...sortedIntegers, ...sortedUUIDs];
   
         return {
             ...state,
@@ -124,6 +137,7 @@ export default function rootReducer(state = initialStore, action) {
             error: "",
             check: [],            
         }
+
         default: return{
             ...state
         }
