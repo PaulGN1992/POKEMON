@@ -73,14 +73,12 @@ function Detail () {
 
     return (
         <section className={style.detail}>
+        <button onClick={handlePrevious} disabled={isFirstPokemon}>
+            Anterior
+        </button>
+            <div>
             {fail && (<div>{fail}</div>) }
             {id > 360 && (<div>{error}</div>)}
-            <button onClick={handlePrevious} disabled={isFirstPokemon}>
-        Previous
-      </button>
-        <button onClick={handleNext} disabled={isLastPokemon}>
-        Next
-      </button>
             {
             pokemonId?.map((p)=>{
                 return (
@@ -104,7 +102,11 @@ function Detail () {
                )
             })  
             }
-        <div><Link to='/home'><button>Regresar</button></Link></div>
+            <div><Link to='/home'><button>Regresar</button></Link></div>
+            </div>
+            <button onClick={handleNext} disabled={isLastPokemon}>
+            Siguiente
+            </button>
         </section>
         
         
